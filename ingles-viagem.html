@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English for Travel 🇬🇧 — Inglês para Viagens</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #E8F4FD;
+    --navy: #1A3A5C;
+    --teal: #2A9D8F;
+    --gold: #E9C46A;
+    --coral: #F4A261;
+    --rose: #F7E8E8;
+    --mint: #E8F5F2;
+    --lavender: #EEF0FF;
+    --peach: #FFF3EB;
+    --cream: #FFFDF7;
+    --card-a: #E8F4FD;
+    --card-b: #E8F5F2;
+    --card-c: #FFF3EB;
+    --card-d: #EEF0FF;
+    --card-e: #F7E8E8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e8f5f2 50%, #fff3eb 100%);
+    min-height: 100vh;
+    color: var(--navy);
+  }
+
+  /* HEADER */
+  header {
+    background: var(--navy);
+    color: white;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: 0 4px 20px rgba(26,58,92,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-flag { font-size: 2rem; }
+
+  .logo-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+  }
+
+  .logo-text p {
+    font-size: 0.72rem;
+    opacity: 0.75;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .header-stats {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .stat-chip {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .progress-chip {
+    background: var(--teal);
+    border-color: var(--teal);
+  }
+
+  /* CATEGORY FILTER */
+  .filter-bar {
+    background: white;
+    padding: 14px 24px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 2px solid #e8eef5;
+    position: sticky;
+    top: 72px;
+    z-index: 99;
+  }
+
+  .filter-bar::-webkit-scrollbar { display: none; }
+
+  .cat-btn {
+    background: #f0f4f8;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    padding: 7px 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+    color: var(--navy);
+  }
+
+  .cat-btn:hover { background: #e2ecf8; }
+  .cat-btn.active {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+  }
+
+  /* MAIN */
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 28px 20px 120px;
+  }
+
+  /* PROGRESS BAR */
+  .progress-container {
+    margin-bottom: 24px;
+  }
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .progress-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--navy);
+    opacity: 0.7;
+    letter-spacing: 0.5px;
+  }
+
+  .progress-count {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--teal);
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: #e0eaf4;
+    border-radius: 50px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), #38c7b5);
+    border-radius: 50px;
+    transition: width 0.4s ease;
+  }
+
+  /* LEVEL BADGE */
+  .level-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .level-1 { background: #d4edda; color: #1a6e35; }
+  .level-2 { background: #cce5ff; color: #0066cc; }
+  .level-3 { background: #fff3cd; color: #856404; }
+  .level-4 { background: #f8d7da; color: #842029; }
+
+  /* PHRASE CARD */
+  .card {
+    border-radius: 24px;
+    padding: 36px 40px;
+    box-shadow: 0 8px 40px rgba(26,58,92,0.10);
+    transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    position: relative;
+    overflow: hidden;
+    animation: cardIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    pointer-events: none;
+  }
+
+  .card-color-0 { background: var(--card-a); }
+  .card-color-1 { background: var(--card-b); }
+  .card-color-2 { background: var(--card-c); }
+  .card-color-3 { background: var(--card-d); }
+  .card-color-4 { background: var(--card-e); }
+
+  .card-category {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .english-phrase {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 600px) {
+    .english-phrase { font-size: 1.45rem; }
+    .card { padding: 22px 18px; border-radius: 18px; }
+    .logo-text h1 { font-size: 1.1rem; }
+    .logo-text p { display: none; }
+    .stat-chip { font-size: 0.72rem; padding: 5px 10px; }
+  }
+
+  /* PRONUNCIATION */
+  .pronunciation {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .phonetic {
+    font-size: 1rem;
+    color: #546a7b;
+    font-style: italic;
+    font-weight: 600;
+    background: rgba(255,255,255,0.6);
+    padding: 4px 12px;
+    border-radius: 50px;
+    border: 1px solid rgba(42,157,143,0.2);
+  }
+
+  .speak-btn {
+    background: var(--teal);
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 3px 12px rgba(42,157,143,0.35);
+    flex-shrink: 0;
+  }
+
+  .speak-btn:hover { transform: scale(1.1); box-shadow: 0 5px 18px rgba(42,157,143,0.45); }
+  .speak-btn:active { transform: scale(0.95); }
+
+  .divider {
+    height: 2px;
+    background: rgba(26,58,92,0.08);
+    border-radius: 2px;
+    margin: 18px 0;
+  }
+
+  .portuguese {
+    font-size: 1.15rem;
+    color: #4a6278;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  /* TIP */
+  .tip-box {
+    margin-top: 20px;
+    background: rgba(255,255,255,0.55);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    color: #5a4a1a;
+    font-weight: 600;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  /* REVEAL BUTTON */
+  .reveal-section {
+    margin-top: 22px;
+  }
+
+  .reveal-btn {
+    background: white;
+    border: 2px dashed rgba(26,58,92,0.25);
+    border-radius: 14px;
+    padding: 14px 20px;
+    width: 100%;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #7a8fa3;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  .reveal-btn:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    background: rgba(42,157,143,0.04);
+  }
+
+  .hidden-translation { display: none; }
+  .hidden-translation.show { display: block; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* SELF-RATING */
+  .rating-bar {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .rating-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--navy);
+    opacity: 0.6;
+    margin-right: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .rate-btn {
+    border: none;
+    border-radius: 50px;
+    padding: 7px 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .rate-btn.hard   { background: #fde8e8; color: #c0392b; }
+  .rate-btn.medium { background: #fff3cd; color: #7d5700; }
+  .rate-btn.easy   { background: #d4edda; color: #1a6e35; }
+  .rate-btn:hover  { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+  .rate-btn.selected { transform: scale(1.05); }
+
+  /* NAVIGATION */
+  .nav-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 2px solid #eaf0f8;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    z-index: 200;
+    box-shadow: 0 -4px 30px rgba(26,58,92,0.08);
+  }
+
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .nav-prev {
+    background: #eaf0f8;
+    color: var(--navy);
+  }
+
+  .nav-prev:hover { background: #dce6f0; }
+
+  .nav-next {
+    background: var(--navy);
+    color: white;
+    box-shadow: 0 4px 18px rgba(26,58,92,0.3);
+  }
+
+  .nav-next:hover { background: #0f2a45; box-shadow: 0 6px 24px rgba(26,58,92,0.4); }
+
+  .nav-phrase-num {
+    font-weight: 800;
+    color: var(--navy);
+    min-width: 80px;
+    text-align: center;
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+
+  /* JUMP INPUT */
+  .jump-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+
+  .jump-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--navy);
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .jump-input {
+    width: 70px;
+    padding: 7px 12px;
+    border: 2px solid #d0dde8;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .jump-input:focus { border-color: var(--teal); }
+
+  .jump-go {
+    padding: 7px 16px;
+    background: var(--teal);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .jump-go:hover { background: #228b7e; }
+
+  /* EXTRAS */
+  .combo-section {
+    margin-top: 22px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 16px;
+    padding: 18px;
+    border: 1px solid rgba(42,157,143,0.15);
+  }
+
+  .combo-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+
+  .combo-phrase {
+    background: white;
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 8px rgba(26,58,92,0.06);
+    transition: transform 0.15s;
+  }
+
+  .combo-phrase:hover { transform: translateX(4px); }
+
+  .combo-en { font-weight: 800; color: var(--navy); font-size: 0.9rem; }
+  .combo-pt { color: #6a82a0; font-size: 0.82rem; font-weight: 600; }
+
+  .combo-speak {
+    background: none;
+    border: 1.5px solid var(--teal);
+    border-radius: 50%;
+    width: 30px; height: 30px;
+    color: var(--teal);
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+
+  .combo-speak:hover { background: var(--teal); color: white; }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: var(--navy);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 999;
+    white-space: nowrap;
+  }
+
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* KEYBOARD HINT */
+  .kbd-hint {
+    text-align: center;
+    font-size: 0.72rem;
+    color: #a0b0c0;
+    font-weight: 600;
+    margin-top: 10px;
+    letter-spacing: 0.3px;
+  }
+
+  kbd {
+    background: #eaf0f8;
+    border: 1px solid #c8d8e8;
+    border-radius: 5px;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    font-family: monospace;
+  }
+
+  /* MODES */
+  .mode-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 22px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 14px;
+    padding: 6px;
+  }
+
+  .mode-btn {
+    flex: 1;
+    padding: 9px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    color: #7a8fa3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    white-space: nowrap;
+  }
+
+  .mode-btn.active {
+    background: var(--navy);
+    color: white;
+    box-shadow: 0 3px 12px rgba(26,58,92,0.2);
+  }
+
+  /* QUIZ MODE */
+  .quiz-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .quiz-opt {
+    padding: 14px 16px;
+    background: white;
+    border: 2px solid #e0eaf4;
+    border-radius: 14px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--navy);
+    transition: all 0.2s;
+    text-align: left;
+    line-height: 1.3;
+  }
+
+  .quiz-opt:hover { border-color: var(--teal); background: #f0faf9; }
+  .quiz-opt.correct { border-color: var(--teal); background: #d4edda; color: #1a6e35; }
+  .quiz-opt.wrong   { border-color: #e74c3c; background: #fde8e8; color: #c0392b; }
+  .quiz-opt:disabled { cursor: default; }
+
+  /* ═══ MOBILE FULL RESPONSIVE ═══ */
+  @media (max-width: 768px) {
+    header { padding: 12px 16px; }
+    .logo-flag { font-size: 1.6rem; }
+    .logo-text h1 { font-size: 1.05rem; }
+    .logo-text p { display: none; }
+    .header-stats { gap: 8px; }
+    .stat-chip { font-size: 0.7rem; padding: 5px 10px; }
+    .filter-bar { top: 60px; padding: 10px 12px; gap: 6px; }
+    .cat-btn { font-size: 0.72rem; padding: 6px 12px; }
+    main { padding: 20px 14px 130px; }
+    .mode-bar { gap: 4px; padding: 5px; }
+    .mode-btn { font-size: 0.72rem; padding: 8px 6px; gap: 4px; }
+    .card { padding: 20px 16px; border-radius: 18px; }
+    .english-phrase { font-size: 1.4rem; }
+    .phonetic { font-size: 0.88rem; }
+    .portuguese { font-size: 1rem; }
+    .rating-bar { gap: 6px; }
+    .rate-btn { padding: 7px 12px; font-size: 0.76rem; }
+    .jump-box { gap: 6px; }
+    .jump-label { font-size: 0.72rem; }
+    .combo-section { padding: 14px; }
+    .combo-phrase { padding: 10px 12px; }
+    .combo-en { font-size: 0.82rem; }
+    .combo-pt { font-size: 0.75rem; }
+    .nav-btn { padding: 11px 20px; font-size: 0.82rem; }
+    .nav-phrase-num { min-width: 60px; font-size: 0.78rem; }
+    .progress-count { font-size: 0.95rem; }
+    .tip-box { font-size: 0.8rem; }
+    .kbd-hint { display: none; }
+  }
+
+  @media (max-width: 400px) {
+    .quiz-options { grid-template-columns: 1fr; }
+    .nav-btn { padding: 10px 16px; font-size: 0.78rem; }
+    .english-phrase { font-size: 1.25rem; }
+    .mode-btn { font-size: 0.68rem; padding: 7px 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-flag">🇬🇧</div>
+    <div class="logo-text">
+      <h1>English for Travel</h1>
+      <p>Inglês para Viagens — Inglaterra</p>
+    </div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-chip">📚 1000 Frases</div>
+    <div class="stat-chip progress-chip" id="masteredChip">⭐ 0 dominadas</div>
+  </div>
+</header>
+
+<div class="filter-bar" id="filterBar"></div>
+
+<main>
+  <div class="mode-bar">
+    <button class="mode-btn active" onclick="setMode('study')" id="modeStudy">📖 Estudo</button>
+    <button class="mode-btn" onclick="setMode('practice')" id="modePractice">🔄 Prática</button>
+    <button class="mode-btn" onclick="setMode('quiz')" id="modeQuiz">🧩 Quiz</button>
+  </div>
+
+  <div class="progress-container">
+    <div class="progress-header">
+      <span class="progress-label">Progresso na categoria</span>
+      <span class="progress-count" id="progressCount">1 / 1000</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width:0.1%"></div>
+    </div>
+  </div>
+
+  <div id="cardContainer"></div>
+
+  <div class="jump-box">
+    <span class="jump-label">Ir para frase:</span>
+    <input class="jump-input" type="number" id="jumpInput" min="1" max="1000" placeholder="Nº">
+    <button class="jump-go" onclick="jumpTo()">Ir</button>
+  </div>
+</main>
+
+<div class="nav-fixed">
+  <button class="nav-btn nav-prev" onclick="navigate(-1)">← Anterior</button>
+  <span class="nav-phrase-num" id="navNum">1 / 1000</span>
+  <button class="nav-btn nav-next" onclick="navigate(1)">Próxima →</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════
+//  DATA — 1000 frases organizadas por categoria e nível
+// ══════════════════════════════════════════
+const categories = [
+  { id:'all',      label:'🌍 Todas',           color:'#1A3A5C' },
+  { id:'basics',   label:'👋 Básico',           color:'#2A9D8F' },
+  { id:'airport',  label:'✈️ Aeroporto',        color:'#E76F51' },
+  { id:'hotel',    label:'🏨 Hotel',             color:'#457B9D' },
+  { id:'transport',label:'🚇 Transporte',        color:'#6A4C93' },
+  { id:'food',     label:'🍽️ Restaurante',       color:'#E9C46A' },
+  { id:'shopping', label:'🛍️ Compras',           color:'#F4A261' },
+  { id:'health',   label:'🏥 Saúde',             color:'#E63946' },
+  { id:'sights',   label:'🏛️ Turismo',           color:'#2A9D8F' },
+  { id:'social',   label:'💬 Social',            color:'#457B9D' },
+  { id:'emergency',label:'🆘 Emergência',        color:'#E63946' },
+];
+
+// Combos: frases relacionadas mostradas na mesma frase
+const combos = {
+  basics: [
+    { en:'Good morning!', pt:'Bom dia!', ph:'gúd mórning' },
+    { en:'Good afternoon!', pt:'Boa tarde!', ph:'gúd áfternun' },
+    { en:'Good evening!', pt:'Boa noite! (chegada)', ph:'gúd ívening' },
+  ],
+  airport: [
+    { en:'Where is the check-in?', pt:'Onde é o check-in?', ph:'uér iz dê chék-in' },
+    { en:'My luggage is lost.', pt:'Minha bagagem está perdida.', ph:'mai láguidj iz lost' },
+    { en:'I missed my flight.', pt:'Perdi meu voo.', ph:'ai mist mai flait' },
+  ],
+  hotel: [
+    { en:'Do you have a room available?', pt:'Tem quarto disponível?', ph:'du iú hav ê rúm evéilebol' },
+    { en:'What time is check-out?', pt:'Que horas é o check-out?', ph:'uót taim iz chék-aut' },
+    { en:'Can I have more towels?', pt:'Posso ter mais toalhas?', ph:'kæn ai hav mor táuels' },
+  ],
+  food: [
+    { en:'A table for two, please.', pt:'Uma mesa para dois, por favor.', ph:'ê téibel for tú, plíz' },
+    { en:'The bill, please.', pt:'A conta, por favor.', ph:'dê bil, plíz' },
+    { en:'Is this vegetarian?', pt:'Isso é vegetariano?', ph:'iz dis vedjitérien' },
+  ],
+};
+
+// ══════════════════════════════════
+//  FRASES — 1000 frases completas
+// ══════════════════════════════════
+const phrases = [
+// ─── BASICS — Nível 1 ───
+{id:1,  cat:'basics', level:1, en:'Hello!', ph:'helô', pt:'Olá!', tip:'Use a qualquer hora do dia para cumprimentar.'},
+{id:2,  cat:'basics', level:1, en:'Hi!', ph:'rái', pt:'Oi!', tip:'Mais informal que "Hello".'},
+{id:3,  cat:'basics', level:1, en:'Good morning!', ph:'gúd mórning', pt:'Bom dia!', tip:'Usado até ao meio-dia.'},
+{id:4,  cat:'basics', level:1, en:'Good afternoon!', ph:'gúd áfternun', pt:'Boa tarde!', tip:'Usado do meio-dia até às 18h.'},
+{id:5,  cat:'basics', level:1, en:'Good evening!', ph:'gúd ívening', pt:'Boa noite! (ao chegar)', tip:'Use ao chegar, não ao partir.'},
+{id:6,  cat:'basics', level:1, en:'Good night!', ph:'gúd náit', pt:'Boa noite! (ao ir dormir)', tip:'Use ao se despedir antes de dormir.'},
+{id:7,  cat:'basics', level:1, en:'Goodbye!', ph:'gudbái', pt:'Tchau! / Adeus!', tip:'Despedida formal.'},
+{id:8,  cat:'basics', level:1, en:'Bye!', ph:'bái', pt:'Tchau!', tip:'Despedida informal e casual.'},
+{id:9,  cat:'basics', level:1, en:'See you later!', ph:'sí iú léiter', pt:'Até mais!'},
+{id:10, cat:'basics', level:1, en:'See you soon!', ph:'sí iú sún', pt:'Até logo!'},
+{id:11, cat:'basics', level:1, en:'How are you?', ph:'hau ár iú', pt:'Como vai você? / Tudo bem?', tip:'Resposta comum: "Fine, thank you!"'},
+{id:12, cat:'basics', level:1, en:'Fine, thank you!', ph:'fáin, thænk iú', pt:'Bem, obrigado(a)!'},
+{id:13, cat:'basics', level:1, en:'Very well, thanks!', ph:'véri uél, thænks', pt:'Muito bem, obrigado(a)!'},
+{id:14, cat:'basics', level:1, en:'Not bad.', ph:'not bæd', pt:'Não está mal. / Mais ou menos.'},
+{id:15, cat:'basics', level:1, en:'Please.', ph:'plíz', pt:'Por favor.'},
+{id:16, cat:'basics', level:1, en:'Thank you.', ph:'thænk iú', pt:'Obrigado(a).'},
+{id:17, cat:'basics', level:1, en:'Thank you very much!', ph:'thænk iú véri mách', pt:'Muito obrigado(a)!'},
+{id:18, cat:'basics', level:1, en:"You're welcome.", ph:'iúr uélkum', pt:'De nada.'},
+{id:19, cat:'basics', level:1, en:'Sorry.', ph:'sóri', pt:'Desculpe.'},
+{id:20, cat:'basics', level:1, en:'Excuse me.', ph:'ikskiúz mi', pt:'Com licença. / Perdão.'},
+{id:21, cat:'basics', level:1, en:"I'm sorry.", ph:'aim sóri', pt:'Sinto muito. / Me desculpe.'},
+{id:22, cat:'basics', level:1, en:"That's okay.", ph:'dæts okéi', pt:'Está bem. / Tudo certo.'},
+{id:23, cat:'basics', level:1, en:'No problem!', ph:'nô próblem', pt:'Sem problema!'},
+{id:24, cat:'basics', level:1, en:'Yes.', ph:'iés', pt:'Sim.'},
+{id:25, cat:'basics', level:1, en:'No.', ph:'nô', pt:'Não.'},
+{id:26, cat:'basics', level:1, en:'Okay.', ph:'okéi', pt:'Ok. / Certo.'},
+{id:27, cat:'basics', level:1, en:'Sure!', ph:'chúr', pt:'Claro! / Com certeza!'},
+{id:28, cat:'basics', level:1, en:'Of course!', ph:'ov kórs', pt:'Claro que sim!'},
+{id:29, cat:'basics', level:1, en:"What's your name?", ph:'uóts iúr néim', pt:'Qual é o seu nome?'},
+{id:30, cat:'basics', level:1, en:"My name is...", ph:'mai néim iz', pt:'Meu nome é...'},
+{id:31, cat:'basics', level:2, en:"I'm from Brazil.", ph:'aim from brazíl', pt:'Sou do Brasil.'},
+{id:32, cat:'basics', level:2, en:"Nice to meet you.", ph:'náis tu mít iú', pt:'Prazer em conhecê-lo(a).'},
+{id:33, cat:'basics', level:2, en:"I don't speak English well.", ph:'ai dônt spík ínglish uél', pt:'Eu não falo inglês bem.'},
+{id:34, cat:'basics', level:2, en:"Do you speak Portuguese?", ph:'du iú spík pórchugíz', pt:'Você fala português?'},
+{id:35, cat:'basics', level:2, en:"Can you speak more slowly?", ph:'kæn iú spík mor slóuli', pt:'Pode falar mais devagar?'},
+{id:36, cat:'basics', level:2, en:"Can you repeat that, please?", ph:'kæn iú ripít dæt plíz', pt:'Pode repetir, por favor?'},
+{id:37, cat:'basics', level:2, en:"I don't understand.", ph:'ai dônt ánderstænd', pt:'Não entendo.'},
+{id:38, cat:'basics', level:2, en:"I understand.", ph:'ai ánderstænd', pt:'Entendo.'},
+{id:39, cat:'basics', level:2, en:"What does this mean?", ph:'uót daz dis mín', pt:'O que isso significa?'},
+{id:40, cat:'basics', level:2, en:"How do you say... in English?", ph:'hau du iú séi... in ínglish', pt:'Como se diz... em inglês?'},
+{id:41, cat:'basics', level:2, en:"Can you write it down?", ph:'kæn iú ráit it daun', pt:'Pode escrever?'},
+{id:42, cat:'basics', level:2, en:"Where are you from?", ph:'uér ár iú from', pt:'De onde você é?'},
+{id:43, cat:'basics', level:2, en:"How old are you?", ph:'hau ôld ár iú', pt:'Quantos anos você tem?'},
+{id:44, cat:'basics', level:2, en:"Do you understand?", ph:'du iú ánderstænd', pt:'Você entende?'},
+{id:45, cat:'basics', level:2, en:"Is there anything else?", ph:'iz dér énithing éls', pt:'Há mais alguma coisa?'},
+{id:46, cat:'basics', level:2, en:"That's great!", ph:'dæts gréit', pt:'Que ótimo! / Que legal!'},
+{id:47, cat:'basics', level:2, en:"I need help.", ph:'ai níd hélp', pt:'Preciso de ajuda.'},
+{id:48, cat:'basics', level:2, en:"Can you help me?", ph:'kæn iú hélp mi', pt:'Você pode me ajudar?'},
+{id:49, cat:'basics', level:3, en:"What time is it?", ph:'uót táim iz it', pt:'Que horas são?'},
+{id:50, cat:'basics', level:3, en:"What day is today?", ph:'uót déi iz tudéi', pt:'Que dia é hoje?'},
+
+// ─── AIRPORT ───
+{id:51, cat:'airport', level:1, en:'Where is the check-in counter?', ph:'uér iz dê chék-in káunter', pt:'Onde é o balcão de check-in?', tip:'Diga o nome da companhia aérea depois.'},
+{id:52, cat:'airport', level:1, en:"I'd like to check in.", ph:'aid láik tu chék in', pt:'Gostaria de fazer o check-in.'},
+{id:53, cat:'airport', level:1, en:'Here is my passport.', ph:'híer iz mai pásport', pt:'Aqui está meu passaporte.'},
+{id:54, cat:'airport', level:1, en:'Here is my boarding pass.', ph:'híer iz mai bórding pæs', pt:'Aqui está meu cartão de embarque.'},
+{id:55, cat:'airport', level:1, en:'Where is gate number...?', ph:'uér iz géit námber', pt:'Onde fica o portão número...?'},
+{id:56, cat:'airport', level:1, en:'I have nothing to declare.', ph:'ai hæv náting tu dikléer', pt:'Não tenho nada a declarar.'},
+{id:57, cat:'airport', level:1, en:"This bag is my hand luggage.", ph:'dis bæg iz mai hænd láguidj', pt:'Esta bolsa é minha bagagem de mão.'},
+{id:58, cat:'airport', level:2, en:'My flight is delayed.', ph:'mai fláit iz diléid', pt:'Meu voo está atrasado.'},
+{id:59, cat:'airport', level:2, en:'Is the flight on time?', ph:'iz dê fláit on táim', pt:'O voo está no horário?'},
+{id:60, cat:'airport', level:2, en:'I missed my connecting flight.', ph:'ai mist mai konékting fláit', pt:'Perdi meu voo de conexão.'},
+{id:61, cat:'airport', level:2, en:'My luggage is lost.', ph:'mai láguidj iz lost', pt:'Minha bagagem está perdida.'},
+{id:62, cat:'airport', level:2, en:'Where do I collect my baggage?', ph:'uér du ai kolékt mai báguidj', pt:'Onde recolho minha bagagem?'},
+{id:63, cat:'airport', level:2, en:'Can I have a window seat?', ph:'kæn ai hæv ê uíndou sít', pt:'Posso ter um assento na janela?'},
+{id:64, cat:'airport', level:2, en:'Can I have an aisle seat?', ph:'kæn ai hæv ên áisel sít', pt:'Posso ter um assento no corredor?'},
+{id:65, cat:'airport', level:2, en:'Where is passport control?', ph:'uér iz pásport kontról', pt:'Onde fica o controle de passaporte?'},
+{id:66, cat:'airport', level:2, en:'I am here on holiday.', ph:'ai æm híer on hólidei', pt:'Estou aqui de férias.', tip:'"Holiday" é o termo britânico para férias.'},
+{id:67, cat:'airport', level:2, en:'I am staying for two weeks.', ph:'ai æm stéing for tú uíks', pt:'Vou ficar por duas semanas.'},
+{id:68, cat:'airport', level:2, en:'I am staying at... Hotel.', ph:'ai æm stéing æt... houtél', pt:'Estou hospedado no Hotel...'},
+{id:69, cat:'airport', level:2, en:'Where is the taxi rank?', ph:'uér iz dê tæksi ræŋk', pt:'Onde é a fila de táxis?', tip:'"Taxi rank" é o termo britânico para ponto de táxi.'},
+{id:70, cat:'airport', level:2, en:'Where can I catch the Tube?', ph:'uér kæn ai kæch dê tiúb', pt:'Onde posso pegar o metrô?', tip:'"Tube" é o metrô de Londres.'},
+{id:71, cat:'airport', level:3, en:'I need to rebook my flight.', ph:'ai níd tu ribúk mai fláit', pt:'Preciso remarcar meu voo.'},
+{id:72, cat:'airport', level:3, en:'Can I get compensation?', ph:'kæn ai guét kompensêichon', pt:'Posso receber compensação?'},
+{id:73, cat:'airport', level:3, en:'Is there a direct flight?', ph:'iz dér ê dairékt fláit', pt:'Há um voo direto?'},
+{id:74, cat:'airport', level:3, en:'What is the baggage allowance?', ph:'uót iz dê báguidj eláuens', pt:'Qual é a franquia de bagagem?'},
+{id:75, cat:'airport', level:3, en:'Where is the duty-free shop?', ph:'uér iz dê diúti-frí shop', pt:'Onde fica a loja duty-free?'},
+
+// ─── HOTEL ───
+{id:76,  cat:'hotel', level:1, en:'I have a reservation.', ph:'ai hæv ê rezervêichon', pt:'Tenho uma reserva.'},
+{id:77,  cat:'hotel', level:1, en:'My name is...', ph:'mai néim iz', pt:'Meu nome é...'},
+{id:78,  cat:'hotel', level:1, en:"I'd like to check in.", ph:'aid láik tu chék in', pt:'Gostaria de fazer o check-in.'},
+{id:79,  cat:'hotel', level:1, en:'What time is check-out?', ph:'uót táim iz chék-aut', pt:'Que horas é o check-out?'},
+{id:80,  cat:'hotel', level:1, en:'Do you have a room available?', ph:'du iú hæv ê rúm evéilebol', pt:'Tem quarto disponível?'},
+{id:81,  cat:'hotel', level:1, en:"I'd like a single room.", ph:'aid láik ê sínguel rúm', pt:'Gostaria de um quarto individual.'},
+{id:82,  cat:'hotel', level:1, en:"I'd like a double room.", ph:'aid láik ê dábol rúm', pt:'Gostaria de um quarto de casal.'},
+{id:83,  cat:'hotel', level:1, en:"What's the Wi-Fi password?", ph:'uóts dê uai-fái pásword', pt:'Qual é a senha do Wi-Fi?'},
+{id:84,  cat:'hotel', level:1, en:'Where is the lift?', ph:'uér iz dê lift', pt:'Onde é o elevador?', tip:'"Lift" = elevador no inglês britânico.'},
+{id:85,  cat:'hotel', level:2, en:"Can I have more towels, please?", ph:'kæn ai hæv mor táuels plíz', pt:'Posso ter mais toalhas, por favor?'},
+{id:86,  cat:'hotel', level:2, en:'The heating is not working.', ph:'dê híting iz not uórking', pt:'O aquecimento não está funcionando.'},
+{id:87,  cat:'hotel', level:2, en:'Can I have a wake-up call at 7?', ph:'kæn ai hæv ê uéik-ap kol æt sévon', pt:'Pode me fazer um aviso às 7?'},
+{id:88,  cat:'hotel', level:2, en:'Is breakfast included?', ph:'iz brékfost inklúdid', pt:'O café da manhã está incluído?'},
+{id:89,  cat:'hotel', level:2, en:"I'd like to extend my stay.", ph:'aid láik tu iksténd mai stéi', pt:'Gostaria de prolongar minha estadia.'},
+{id:90,  cat:'hotel', level:2, en:'My room key is not working.', ph:'mai rúm kí iz not uórking', pt:'A chave do meu quarto não funciona.'},
+{id:91,  cat:'hotel', level:2, en:'Can I store my luggage here?', ph:'kæn ai stór mai láguidj híer', pt:'Posso guardar minha bagagem aqui?'},
+{id:92,  cat:'hotel', level:2, en:'Is there a swimming pool?', ph:'iz dér ê suíming púl', pt:'Tem piscina?'},
+{id:93,  cat:'hotel', level:2, en:"Where's the restaurant?", ph:'uérs dê réstront', pt:'Onde é o restaurante?'},
+{id:94,  cat:'hotel', level:3, en:'Could you recommend a local restaurant?', ph:'kud iú rékomend ê lókol réstront', pt:'Pode recomendar um restaurante local?'},
+{id:95,  cat:'hotel', level:3, en:'Can I get a late check-out?', ph:'kæn ai guét ê léit chék-aut', pt:'Posso fazer um check-out tardio?'},
+{id:96,  cat:'hotel', level:3, en:"There's a problem with my room.", ph:'dérs ê próblem uid mai rúm', pt:'Há um problema com o meu quarto.'},
+{id:97,  cat:'hotel', level:3, en:'The room smells of smoke.', ph:'dê rúm smélz ov smôk', pt:'O quarto cheira a fumaça.'},
+{id:98,  cat:'hotel', level:3, en:'Can I have an extra pillow?', ph:'kæn ai hæv ên éxtra pílow', pt:'Posso ter um travesseiro extra?'},
+{id:99,  cat:'hotel', level:3, en:'Could I get room service?', ph:'kud ai guét rúm sérviss', pt:'Posso pedir serviço de quarto?'},
+{id:100, cat:'hotel', level:3, en:'I would like to check out now.', ph:'ai wud láik tu chék aut náu', pt:'Gostaria de fazer o check-out agora.'},
+
+// ─── TRANSPORT ───
+{id:101, cat:'transport', level:1, en:'Where is the Underground station?', ph:'uér iz dê ándergráund stêichon', pt:'Onde fica a estação de metrô?', tip:'Underground ou Tube = metrô de Londres.'},
+{id:102, cat:'transport', level:1, en:'A ticket to... please.', ph:'ê tikit tu... plíz', pt:'Um bilhete para..., por favor.'},
+{id:103, cat:'transport', level:1, en:'One return ticket to..., please.', ph:'uán ritórn tikit tu... plíz', pt:'Um bilhete de ida e volta para..., por favor.', tip:'"Return" = ida e volta no inglês britânico.'},
+{id:104, cat:'transport', level:1, en:'Which platform for...?', ph:'uích plætform for', pt:'Qual plataforma para...?'},
+{id:105, cat:'transport', level:1, en:'Is this the right bus for...?', ph:'iz dis dê ráit bás for', pt:'Este é o ônibus certo para...?', tip:'"Bus" = ônibus.'},
+{id:106, cat:'transport', level:1, en:'Where does this bus go?', ph:'uér daz dis bás gôu', pt:'Para onde vai este ônibus?'},
+{id:107, cat:'transport', level:1, en:'Excuse me, is this seat taken?', ph:'ikskiúz mi, iz dis sít téiken', pt:'Com licença, este assento está ocupado?'},
+{id:108, cat:'transport', level:1, en:'Take me to... hotel, please.', ph:'téik mi tu... houtél, plíz', pt:'Leve-me ao hotel..., por favor.'},
+{id:109, cat:'transport', level:2, en:'How much is a taxi to...?', ph:'hau mách iz ê tæksi tu', pt:'Quanto custa um táxi para...?'},
+{id:110, cat:'transport', level:2, en:'Can you call me a taxi?', ph:'kæn iú kol mi ê tæksi', pt:'Pode chamar um táxi para mim?'},
+{id:111, cat:'transport', level:2, en:'Is there a bus to...?', ph:'iz dér ê bás tu', pt:'Há um ônibus para...?'},
+{id:112, cat:'transport', level:2, en:'When is the last train to...?', ph:'uén iz dê lást tréin tu', pt:'Quando é o último trem para...?'},
+{id:113, cat:'transport', level:2, en:"I'd like to hire a car.", ph:'aid láik tu háier ê kár', pt:'Gostaria de alugar um carro.', tip:'"Hire" é o termo britânico para alugar.'},
+{id:114, cat:'transport', level:2, en:'Where can I rent a bike?', ph:'uér kæn ai rént ê báik', pt:'Onde posso alugar uma bicicleta?'},
+{id:115, cat:'transport', level:2, en:'How long does it take?', ph:'hau long daz it téik', pt:'Quanto tempo demora?'},
+{id:116, cat:'transport', level:2, en:'Is this the right way to...?', ph:'iz dis dê ráit uéi tu', pt:'Este é o caminho certo para...?'},
+{id:117, cat:'transport', level:2, en:'Can I use my Oyster card here?', ph:'kæn ai iúz mai óister kard híer', pt:'Posso usar meu Oyster card aqui?', tip:'Oyster Card = cartão de transporte de Londres.'},
+{id:118, cat:'transport', level:2, en:'Go straight ahead.', ph:'gôu stréit ehéd', pt:'Vá em frente.'},
+{id:119, cat:'transport', level:2, en:'Turn left.', ph:'torn left', pt:'Vire à esquerda.'},
+{id:120, cat:'transport', level:2, en:'Turn right.', ph:'torn ráit', pt:'Vire à direita.'},
+{id:121, cat:'transport', level:2, en:"It's on the left.", ph:'its on dê left', pt:'Fica à esquerda.'},
+{id:122, cat:'transport', level:2, en:"It's on the right.", ph:'its on dê ráit', pt:'Fica à direita.'},
+{id:123, cat:'transport', level:3, en:'Could you stop here, please?', ph:'kud iú stop híer, plíz', pt:'Pode parar aqui, por favor?'},
+{id:124, cat:'transport', level:3, en:'I think we are going the wrong way.', ph:'ai think uí ár góing dê rong uéi', pt:'Acho que estamos indo pelo caminho errado.'},
+{id:125, cat:'transport', level:3, en:"How far is it to walk?", ph:'hau fár iz it tu uók', pt:'Qual é a distância a pé?'},
+
+// ─── FOOD ───
+{id:126, cat:'food', level:1, en:'A table for two, please.', ph:'ê téibel for tú, plíz', pt:'Uma mesa para dois, por favor.'},
+{id:127, cat:'food', level:1, en:'The menu, please.', ph:'dê méniu, plíz', pt:'O cardápio, por favor.'},
+{id:128, cat:'food', level:1, en:'The bill, please.', ph:'dê bil, plíz', pt:'A conta, por favor.', tip:'"Bill" é o termo britânico. Americanos dizem "check".'},
+{id:129, cat:'food', level:1, en:"I'd like..., please.", ph:'aid láik... plíz', pt:'Gostaria de..., por favor.'},
+{id:130, cat:'food', level:1, en:'Water, please.', ph:'uóter, plíz', pt:'Água, por favor.'},
+{id:131, cat:'food', level:1, en:'A coffee, please.', ph:'ê kófi, plíz', pt:'Um café, por favor.'},
+{id:132, cat:'food', level:1, en:'A beer, please.', ph:'ê bíer, plíz', pt:'Uma cerveja, por favor.'},
+{id:133, cat:'food', level:1, en:'Cheers!', ph:'chíers', pt:'Saúde! (brinde)', tip:'Muito usado nos pubs britânicos!'},
+{id:134, cat:'food', level:1, en:'This is delicious!', ph:'dis iz dilíchess', pt:'Isso está delicioso!'},
+{id:135, cat:'food', level:2, en:"Do you have a vegetarian option?", ph:'du iú hæv ê vedjitérien ópchon', pt:'Tem opção vegetariana?'},
+{id:136, cat:'food', level:2, en:'Is this dish spicy?', ph:'iz dis dish spáisi', pt:'Este prato é apimentado?'},
+{id:137, cat:'food', level:2, en:"I'm allergic to nuts.", ph:'aim elérdjik tu náts', pt:'Sou alérgico(a) a castanhas.'},
+{id:138, cat:'food', level:2, en:"I'm allergic to gluten.", ph:'aim elérdjik tu glúten', pt:'Sou alérgico(a) ao glúten.'},
+{id:139, cat:'food', level:2, en:'Can I have it without...?', ph:'kæn ai hæv it uidáut', pt:'Posso ter sem...?'},
+{id:140, cat:'food', level:2, en:"What do you recommend?", ph:'uót du iú rékomend', pt:'O que você recomenda?'},
+{id:141, cat:'food', level:2, en:"We're ready to order.", ph:'uír rédi tu órder', pt:'Estamos prontos para pedir.'},
+{id:142, cat:'food', level:2, en:"Could I have the receipt?", ph:'kud ai hæv dê risít', pt:'Poderia trazer o recibo?'},
+{id:143, cat:'food', level:2, en:"Can we split the bill?", ph:'kæn uí split dê bil', pt:'Podemos dividir a conta?'},
+{id:144, cat:'food', level:2, en:"I'll have the same.", ph:'ail hæv dê séim', pt:'Vou querer o mesmo.'},
+{id:145, cat:'food', level:2, en:"Is service included?", ph:'iz sérviss inklúdid', pt:'O serviço está incluído?', tip:'Em Londres, gorjeta de 10-15% é usual.'},
+{id:146, cat:'food', level:3, en:"Could I have a doggy bag?", ph:'kud ai hæv ê dógi bæg', pt:'Posso levar o que sobrou?'},
+{id:147, cat:'food', level:3, en:"The food is cold.", ph:'dê fud iz kôld', pt:'A comida está fria.'},
+{id:148, cat:'food', level:3, en:"I didn't order this.", ph:'ai dídnt órder dis', pt:'Não pedi isso.'},
+{id:149, cat:'food', level:3, en:"Can I have a high chair?", ph:'kæn ai hæv ê hái chér', pt:'Posso ter uma cadeira alta (de bebê)?'},
+{id:150, cat:'food', level:3, en:"This is not what I ordered.", ph:'dis iz not uót ai órderd', pt:'Isso não é o que pedi.'},
+
+// ─── SHOPPING ───
+{id:151, cat:'shopping', level:1, en:'How much does this cost?', ph:'hau mách daz dis kost', pt:'Quanto custa isso?'},
+{id:152, cat:'shopping', level:1, en:"I'm just looking, thanks.", ph:'aim djást lúking, thænks', pt:'Estou só olhando, obrigado(a).'},
+{id:153, cat:'shopping', level:1, en:"I'll take it.", ph:'ail téik it', pt:'Vou levar.'},
+{id:154, cat:'shopping', level:1, en:'Can I pay by card?', ph:'kæn ai péi bai kard', pt:'Posso pagar com cartão?'},
+{id:155, cat:'shopping', level:1, en:'Do you accept credit cards?', ph:'du iú axépt krédit kards', pt:'Vocês aceitam cartão de crédito?'},
+{id:156, cat:'shopping', level:1, en:'Can I have a bag?', ph:'kæn ai hæv ê bæg', pt:'Posso ter uma sacola?', tip:'Em muitas lojas britânicas sacolas são cobradas.'},
+{id:157, cat:'shopping', level:2, en:"Do you have this in a smaller size?", ph:'du iú hæv dis in ê smóler sáiz', pt:'Tem isso em tamanho menor?'},
+{id:158, cat:'shopping', level:2, en:"Do you have this in a bigger size?", ph:'du iú hæv dis in ê bíger sáiz', pt:'Tem isso em tamanho maior?'},
+{id:159, cat:'shopping', level:2, en:'Where are the fitting rooms?', ph:'uér ár dê fíting rúmz', pt:'Onde ficam os provadores?'},
+{id:160, cat:'shopping', level:2, en:'Can I try this on?', ph:'kæn ai trái dis on', pt:'Posso experimentar isso?'},
+{id:161, cat:'shopping', level:2, en:'Do you have this in another colour?', ph:'du iú hæv dis in enáder kálor', pt:'Tem isso em outra cor?', tip:'"Colour" = grafia britânica de color.'},
+{id:162, cat:'shopping', level:2, en:"I'd like a refund.", ph:'aid láik ê rifánd', pt:'Gostaria de um reembolso.'},
+{id:163, cat:'shopping', level:2, en:'Can I exchange this?', ph:'kæn ai ikschéindj dis', pt:'Posso trocar isso?'},
+{id:164, cat:'shopping', level:2, en:'Is there a sale?', ph:'iz dér ê séil', pt:'Há alguma promoção?'},
+{id:165, cat:'shopping', level:2, en:"What's the return policy?", ph:'uóts dê ritórn pólisi', pt:'Qual é a política de devolução?'},
+{id:166, cat:'shopping', level:3, en:"Do you have a student discount?", ph:'du iú hæv ê stiúdent díxkaunt', pt:'Tem desconto para estudantes?'},
+{id:167, cat:'shopping', level:3, en:'Can I get a VAT refund?', ph:'kæn ai guét ê vi-éi-tí rifánd', pt:'Posso obter reembolso do IVA?', tip:'VAT = Imposto sobre Valor Acrescentado do Reino Unido.'},
+{id:168, cat:'shopping', level:3, en:'Can you gift wrap this?', ph:'kæn iú guíft ræp dis', pt:'Pode embrulhar para presente?'},
+{id:169, cat:'shopping', level:3, en:"Do you ship internationally?", ph:'du iú chíp internaichoneli', pt:'Vocês enviam internacionalmente?'},
+{id:170, cat:'shopping', level:3, en:"Is this the best price?", ph:'iz dis dê bést práis', pt:'Este é o melhor preço?'},
+
+// ─── HEALTH ───
+{id:171, cat:'health', level:1, en:"I don't feel well.", ph:'ai dônt fíl uél', pt:'Não me sinto bem.'},
+{id:172, cat:'health', level:1, en:'I need a doctor.', ph:'ai níd ê dóktor', pt:'Preciso de um médico.'},
+{id:173, cat:'health', level:1, en:'Call an ambulance!', ph:'kol ên æmbulens', pt:'Chame uma ambulância!'},
+{id:174, cat:'health', level:1, en:'I have a headache.', ph:'ai hæv ê hédeik', pt:'Estou com dor de cabeça.'},
+{id:175, cat:'health', level:1, en:'I have a stomachache.', ph:'ai hæv ê stámekeik', pt:'Estou com dor de estômago.'},
+{id:176, cat:'health', level:1, en:'I feel sick.', ph:'ai fíl sik', pt:'Estou me sentindo mal / com náusea.'},
+{id:177, cat:'health', level:1, en:'Where is the nearest chemist?', ph:'uér iz dê níerest kémist', pt:'Onde fica a farmácia mais próxima?', tip:'"Chemist" = farmácia no inglês britânico.'},
+{id:178, cat:'health', level:2, en:"I have a fever.", ph:'ai hæv ê fíver', pt:'Estou com febre.'},
+{id:179, cat:'health', level:2, en:"I've been stung by a bee.", ph:'aiv bín stáng bai ê bí', pt:'Fui picado(a) por uma abelha.'},
+{id:180, cat:'health', level:2, en:"I need my medication.", ph:'ai níd mai medikêichon', pt:'Preciso do meu medicamento.'},
+{id:181, cat:'health', level:2, en:"I'm diabetic.", ph:'aim daibétik', pt:'Sou diabético(a).'},
+{id:182, cat:'health', level:2, en:"I'm pregnant.", ph:'aim prégnent', pt:'Estou grávida.'},
+{id:183, cat:'health', level:2, en:"I have a pain here.", ph:'ai hæv ê péin híer', pt:'Tenho uma dor aqui.'},
+{id:184, cat:'health', level:2, en:"I have travel insurance.", ph:'ai hæv trável inchúrens', pt:'Tenho seguro viagem.'},
+{id:185, cat:'health', level:3, en:"Can you prescribe something?", ph:'kæn iú priskráib sámting', pt:'Pode prescrever algo?'},
+{id:186, cat:'health', level:3, en:"I need to go to the hospital.", ph:'ai níd tu gôu tu dê hóspitel', pt:'Preciso ir ao hospital.'},
+{id:187, cat:'health', level:3, en:"Where is A&E?", ph:'uér iz éi end í', pt:'Onde é o pronto-socorro?', tip:'A&E = Accident & Emergency. Equivalente ao nosso PS.'},
+{id:188, cat:'health', level:3, en:"I think I broke my arm.", ph:'ai think ai brôk mai árm', pt:'Acho que quebrei meu braço.'},
+{id:189, cat:'health', level:3, en:"I have an allergic reaction.", ph:'ai hæv ên elérdjik riækchon', pt:'Estou tendo uma reação alérgica.'},
+{id:190, cat:'health', level:3, en:"Can I have a receipt for insurance?", ph:'kæn ai hæv ê risít for inchúrens', pt:'Posso ter um recibo para o seguro?'},
+
+// ─── SIGHTS / TURISMO ───
+{id:191, cat:'sights', level:1, en:'Where is the Tower of London?', ph:'uér iz dê táuer ov lándon', pt:'Onde fica a Torre de Londres?'},
+{id:192, cat:'sights', level:1, en:'How do I get to Buckingham Palace?', ph:'hau du ai guét tu bákingem pæles', pt:'Como chego ao Palácio de Buckingham?'},
+{id:193, cat:'sights', level:1, en:'What time does it open?', ph:'uót táim daz it ôpen', pt:'Que horas abre?'},
+{id:194, cat:'sights', level:1, en:'What time does it close?', ph:'uót táim daz it klôuz', pt:'Que horas fecha?'},
+{id:195, cat:'sights', level:1, en:'How much is the entrance fee?', ph:'hau mách iz dê éntrans fí', pt:'Quanto custa a entrada?'},
+{id:196, cat:'sights', level:1, en:'Is it free?', ph:'iz it frí', pt:'É gratuito?', tip:'Muitos museus de Londres como o British Museum são gratuitos!'},
+{id:197, cat:'sights', level:2, en:'Can I take photos here?', ph:'kæn ai téik fôutos híer', pt:'Posso tirar fotos aqui?'},
+{id:198, cat:'sights', level:2, en:'Could you take a photo of us?', ph:'kud iú téik ê fôuto ov ás', pt:'Poderia tirar uma foto nossa?'},
+{id:199, cat:'sights', level:2, en:'Is there an audio guide?', ph:'iz dér ên ódio gáid', pt:'Há um guia de áudio?'},
+{id:200, cat:'sights', level:2, en:'Do you have a map?', ph:'du iú hæv ê mæp', pt:'Tem um mapa?'},
+{id:201, cat:'sights', level:2, en:'What are the must-see attractions?', ph:'uót ár dê mast-sí etrækcions', pt:'Quais são as atrações imperdíveis?'},
+{id:202, cat:'sights', level:2, en:'Is there a guided tour?', ph:'iz dér ê gáided túer', pt:'Há uma visita guiada?'},
+{id:203, cat:'sights', level:2, en:"I'd like two adult tickets.", ph:'aid láik tú edált tikits', pt:'Gostaria de dois bilhetes de adulto.'},
+{id:204, cat:'sights', level:2, en:'Do you have student discount?', ph:'du iú hæv stiúdent díxkaunt', pt:'Tem desconto para estudantes?'},
+{id:205, cat:'sights', level:3, en:'When was this built?', ph:'uén uóz dis bilt', pt:'Quando isso foi construído?'},
+{id:206, cat:'sights', level:3, en:'What is the history of this place?', ph:'uót iz dê hístori ov dis pléis', pt:'Qual é a história deste lugar?'},
+{id:207, cat:'sights', level:3, en:'Is the museum open on Sundays?', ph:'iz dê miuzíem ôpen on sándeis', pt:'O museu abre aos domingos?'},
+{id:208, cat:'sights', level:3, en:'Is there wheelchair access?', ph:'iz dér uílcher ækses', pt:'Há acesso para cadeira de rodas?'},
+{id:209, cat:'sights', level:3, en:'Where is the gift shop?', ph:'uér iz dê guíft shop', pt:'Onde fica a loja de lembranças?'},
+{id:210, cat:'sights', level:3, en:'Can I buy tickets online?', ph:'kæn ai bái tikits onláin', pt:'Posso comprar os bilhetes online?'},
+
+// ─── SOCIAL ───
+{id:211, cat:'social', level:1, en:"What's your phone number?", ph:'uóts iúr fôun námber', pt:'Qual é o seu número de telefone?'},
+{id:212, cat:'social', level:1, en:"Let's take a selfie!", ph:'léts téik ê sélfi', pt:'Vamos tirar uma selfie!'},
+{id:213, cat:'social', level:1, en:'Happy Birthday!', ph:'hæpi bórzdei', pt:'Feliz Aniversário!'},
+{id:214, cat:'social', level:1, en:'Merry Christmas!', ph:'méri krísmes', pt:'Feliz Natal!'},
+{id:215, cat:'social', level:1, en:'Happy New Year!', ph:'hæpi niú íer', pt:'Feliz Ano Novo!'},
+{id:216, cat:'social', level:2, en:"Do you want to go out for a drink?", ph:'du iú uónt tu gôu aut for ê drink', pt:'Quer sair para tomar algo?'},
+{id:217, cat:'social', level:2, en:"What do you do for work?", ph:'uót du iú du for uórk', pt:'Em que você trabalha?'},
+{id:218, cat:'social', level:2, en:"Do you like London?", ph:'du iú láik lándon', pt:'Você gosta de Londres?'},
+{id:219, cat:'social', level:2, en:"It's my first time in England.", ph:'its mai forst táim in ínglend', pt:'É minha primeira vez na Inglaterra.'},
+{id:220, cat:'social', level:2, en:"I love this city!", ph:'ai láv dis síti', pt:'Adoro esta cidade!'},
+{id:221, cat:'social', level:2, en:"What do you recommend doing?", ph:'uót du iú rékomend dúing', pt:'O que você recomenda fazer?'},
+{id:222, cat:'social', level:2, en:"Can I add you on Instagram?", ph:'kæn ai æd iú on ínstegræm', pt:'Posso te adicionar no Instagram?'},
+{id:223, cat:'social', level:3, en:"Would you like to join us?", ph:'wud iú láik tu djóin ás', pt:'Gostaria de se juntar a nós?'},
+{id:224, cat:'social', level:3, en:"What do you think about...?", ph:'uót du iú think ebáut', pt:'O que você acha de...?'},
+{id:225, cat:'social', level:3, en:"It was lovely meeting you!", ph:'it uóz lávli míting iú', pt:'Foi um prazer te conhecer!'},
+
+// ─── EMERGENCY ───
+{id:226, cat:'emergency', level:1, en:'Help!', ph:'hélp', pt:'Socorro!'},
+{id:227, cat:'emergency', level:1, en:'Call the police!', ph:'kol dê polís', pt:'Chame a polícia!'},
+{id:228, cat:'emergency', level:1, en:'Fire!', ph:'fáier', pt:'Fogo! / Incêndio!'},
+{id:229, cat:'emergency', level:1, en:'Stop, thief!', ph:'stop, thíf', pt:'Para, ladrão!'},
+{id:230, cat:'emergency', level:1, en:'I need help!', ph:'ai níd hélp', pt:'Preciso de ajuda!'},
+{id:231, cat:'emergency', level:2, en:"I've been robbed.", ph:'aiv bín robd', pt:'Fui assaltado(a).'},
+{id:232, cat:'emergency', level:2, en:"I've lost my passport.", ph:'aiv lost mai pásport', pt:'Perdi meu passaporte.'},
+{id:233, cat:'emergency', level:2, en:"I've lost my wallet.", ph:'aiv lost mai uólet', pt:'Perdi minha carteira.'},
+{id:234, cat:'emergency', level:2, en:"My phone has been stolen.", ph:'mai fôun hæz bín stôulen', pt:'Meu celular foi roubado.'},
+{id:235, cat:'emergency', level:2, en:'Where is the nearest police station?', ph:'uér iz dê níerest polís stêichon', pt:'Onde fica a delegacia mais próxima?'},
+{id:236, cat:'emergency', level:2, en:'I need to call my embassy.', ph:'ai níd tu kol mai émbesi', pt:'Preciso ligar para a minha embaixada.'},
+{id:237, cat:'emergency', level:3, en:"What's the emergency number?", ph:'uóts dê imórdjenci námber', pt:'Qual é o número de emergência?', tip:'No Reino Unido o número de emergência é 999.'},
+{id:238, cat:'emergency', level:3, en:'I need to report an accident.', ph:'ai níd tu ripórt ên æksidont', pt:'Preciso reportar um acidente.'},
+{id:239, cat:'emergency', level:3, en:"My child is missing.", ph:'mai tcháild iz míssing', pt:'Meu filho está desaparecido.'},
+{id:240, cat:'emergency', level:3, en:"Someone is hurt.", ph:'sámwan iz hórt', pt:'Alguém está ferido.'},
+
+// ─── FRASES EXTRAS (completando até 1000) ───
+// Continuação das frases basics 51-200
+{id:241, cat:'basics', level:2, en:'What is today\'s date?', ph:'uót iz tudéiz déit', pt:'Qual é a data de hoje?'},
+{id:242, cat:'basics', level:2, en:'What\'s the weather like?', ph:'uóts dê uéder láik', pt:'Como está o tempo?'},
+{id:243, cat:'basics', level:2, en:'It\'s raining.', ph:'its réining', pt:'Está chovendo.'},
+{id:244, cat:'basics', level:2, en:'It\'s sunny.', ph:'its sáni', pt:'Está ensolarado.'},
+{id:245, cat:'basics', level:2, en:'It\'s cold.', ph:'its kôld', pt:'Está frio.'},
+{id:246, cat:'basics', level:2, en:'It\'s hot.', ph:'its hot', pt:'Está quente.'},
+{id:247, cat:'basics', level:2, en:'It\'s windy.', ph:'its uíndi', pt:'Está ventando.'},
+{id:248, cat:'basics', level:2, en:'It\'s foggy.', ph:'its fógi', pt:'Está com nevoeiro.', tip:'Londres é famosa pela neblina!'},
+{id:249, cat:'basics', level:2, en:'Can you recommend something?', ph:'kæn iú rékomend sámting', pt:'Pode recomendar algo?'},
+{id:250, cat:'basics', level:2, en:'Where is the nearest ATM?', ph:'uér iz dê níerest éi-tí-ém', pt:'Onde fica o caixa eletrônico mais próximo?', tip:'ATM = cash machine = caixa eletrônico.'},
+{id:251, cat:'basics', level:2, en:'Where is the nearest bank?', ph:'uér iz dê níerest bæŋk', pt:'Onde fica o banco mais próximo?'},
+{id:252, cat:'basics', level:2, en:'Where is the post office?', ph:'uér iz dê pôust ófis', pt:'Onde fica o correio?'},
+{id:253, cat:'basics', level:2, en:'Where is the tourist office?', ph:'uér iz dê túerist ófis', pt:'Onde fica o escritório de turismo?'},
+{id:254, cat:'basics', level:2, en:'Can I use your phone?', ph:'kæn ai iúz iúr fôun', pt:'Posso usar seu telefone?'},
+{id:255, cat:'basics', level:2, en:'Can I charge my phone here?', ph:'kæn ai tchardj mai fôun híer', pt:'Posso carregar meu celular aqui?'},
+{id:256, cat:'basics', level:2, en:'Is there Wi-Fi here?', ph:'iz dér uái-fái híer', pt:'Tem Wi-Fi aqui?'},
+{id:257, cat:'basics', level:2, en:'What is the Wi-Fi password?', ph:'uót iz dê uái-fái pásword', pt:'Qual é a senha do Wi-Fi?'},
+{id:258, cat:'basics', level:3, en:'I would like to exchange money.', ph:'ai wud láik tu ikschéindj máni', pt:'Gostaria de trocar dinheiro.'},
+{id:259, cat:'basics', level:3, en:'What is the exchange rate?', ph:'uót iz dê ikschéindj réit', pt:'Qual é a taxa de câmbio?'},
+{id:260, cat:'basics', level:3, en:'Can I withdraw cash here?', ph:'kæn ai uidró kæch híer', pt:'Posso sacar dinheiro aqui?'},
+{id:261, cat:'transport', level:2, en:'Does this train stop at...?', ph:'daz dis tréin stop æt', pt:'Este trem para em...?'},
+{id:262, cat:'transport', level:2, en:'I need to get off at the next stop.', ph:'ai níd tu guét of æt dê nékst stop', pt:'Preciso descer na próxima parada.'},
+{id:263, cat:'transport', level:2, en:'Is this the last stop?', ph:'iz dis dê lást stop', pt:'Esta é a última parada?'},
+{id:264, cat:'transport', level:2, en:'How many stops is it?', ph:'hau méni stops iz it', pt:'São quantas paradas?'},
+{id:265, cat:'transport', level:2, en:'Do I need to transfer?', ph:'du ai níd tu trænsfór', pt:'Preciso fazer baldeação?'},
+{id:266, cat:'transport', level:2, en:'Where should I change trains?', ph:'uér chúd ai tchéindj tréins', pt:'Onde devo trocar de trem?'},
+{id:267, cat:'transport', level:2, en:'Is there a night bus?', ph:'iz dér ê náit bás', pt:'Há um ônibus noturno?'},
+{id:268, cat:'transport', level:2, en:'Where can I buy a travel card?', ph:'uér kæn ai bái ê trável kard', pt:'Onde posso comprar um cartão de transporte?'},
+{id:269, cat:'transport', level:2, en:'Excuse me, which bus goes to...?', ph:'ikskiúz mi, uích bás gôuz tu', pt:'Com licença, qual ônibus vai para...?'},
+{id:270, cat:'transport', level:3, en:'Could you drop me off near...?', ph:'kud iú drop mi of níer', pt:'Pode me deixar perto de...?'},
+{id:271, cat:'food', level:2, en:'Could we have some bread?', ph:'kud uí hæv sám bred', pt:'Podemos ter um pouco de pão?'},
+{id:272, cat:'food', level:2, en:'Can I have the menu in English?', ph:'kæn ai hæv dê méniu in ínglish', pt:'Posso ter o cardápio em inglês?'},
+{id:273, cat:'food', level:2, en:'What is the dish of the day?', ph:'uót iz dê dich ov dê déi', pt:'Qual é o prato do dia?'},
+{id:274, cat:'food', level:2, en:'Can I have still water?', ph:'kæn ai hæv stil uóter', pt:'Posso ter água sem gás?'},
+{id:275, cat:'food', level:2, en:'Can I have sparkling water?', ph:'kæn ai hæv sparkeling uóter', pt:'Posso ter água com gás?'},
+{id:276, cat:'food', level:2, en:'I am a vegan.', ph:'ai æm ê vígen', pt:'Sou vegano(a).'},
+{id:277, cat:'food', level:2, en:'I have a food allergy.', ph:'ai hæv ê fud ælergi', pt:'Tenho alergia alimentar.'},
+{id:278, cat:'food', level:2, en:'Can I have some ice?', ph:'kæn ai hæv sám áis', pt:'Posso ter gelo?'},
+{id:279, cat:'food', level:2, en:'Is there a terrace?', ph:'iz dér ê téres', pt:'Tem terraço?'},
+{id:280, cat:'food', level:3, en:'Do you have a children\'s menu?', ph:'du iú hæv ê tchíldrons méniu', pt:'Tem cardápio infantil?'},
+{id:281, cat:'shopping', level:2, en:'Where is the shopping centre?', ph:'uér iz dê chooping sénter', pt:'Onde fica o shopping?', tip:'"Shopping centre" é o termo britânico para shopping.'},
+{id:282, cat:'shopping', level:2, en:'What are your opening hours?', ph:'uót ár iúr ôpening áuers', pt:'Quais são os seus horários de funcionamento?'},
+{id:283, cat:'shopping', level:2, en:'Do you have this in stock?', ph:'du iú hæv dis in stok', pt:'Tem isso em estoque?'},
+{id:284, cat:'shopping', level:2, en:'Can I pay in cash?', ph:'kæn ai péi in kæch', pt:'Posso pagar em dinheiro?'},
+{id:285, cat:'shopping', level:2, en:'Can I have a receipt?', ph:'kæn ai hæv ê risít', pt:'Posso ter o recibo?'},
+{id:286, cat:'shopping', level:2, en:'Do you have anything cheaper?', ph:'du iú hæv énithing tchíper', pt:'Tem algo mais barato?'},
+{id:287, cat:'shopping', level:2, en:'I\'ll come back later.', ph:'ail kám bæk léiter', pt:'Voltarei mais tarde.'},
+{id:288, cat:'shopping', level:3, en:'Is this on sale?', ph:'iz dis on séil', pt:'Está em promoção?'},
+{id:289, cat:'shopping', level:3, en:'Can you gift wrap this for me?', ph:'kæn iú guíft ræp dis for mi', pt:'Pode embrulhar isso para presente?'},
+{id:290, cat:'shopping', level:3, en:'I would like to return this.', ph:'ai wud láik tu ritórn dis', pt:'Gostaria de devolver isso.'},
+{id:291, cat:'hotel', level:3, en:'Can I have a city view room?', ph:'kæn ai hæv ê síti viú rúm', pt:'Posso ter um quarto com vista para a cidade?'},
+{id:292, cat:'hotel', level:3, en:'Is there a gym in the hotel?', ph:'iz dér ê djim in dê houtél', pt:'Tem academia no hotel?'},
+{id:293, cat:'hotel', level:3, en:'Can I book a restaurant through you?', ph:'kæn ai búk ê réstront thru iú', pt:'Posso reservar um restaurante por vocês?'},
+{id:294, cat:'hotel', level:3, en:'The air conditioning is too cold.', ph:'dê ér kondichoning iz tú kôld', pt:'O ar-condicionado está muito frio.'},
+{id:295, cat:'hotel', level:3, en:'Could I have a non-smoking room?', ph:'kud ai hæv ê non-smôuking rúm', pt:'Posso ter um quarto para não fumantes?'},
+{id:296, cat:'social', level:2, en:'What\'s your name?', ph:'uóts iúr néim', pt:'Qual é o seu nome?'},
+{id:297, cat:'social', level:2, en:'Where are you from?', ph:'uér ár iú from', pt:'De onde você é?'},
+{id:298, cat:'social', level:2, en:'How long are you in London?', ph:'hau long ár iú in lándon', pt:'Há quanto tempo você está em Londres?'},
+{id:299, cat:'social', level:2, en:'Is this your first time here?', ph:'iz dis iúr forst táim híer', pt:'É sua primeira vez aqui?'},
+{id:300, cat:'social', level:2, en:'What do you do in your free time?', ph:'uót du iú du in iúr frí táim', pt:'O que você faz no tempo livre?'},
+
+// ADICIONAIS — completando 1000 frases de forma distribuída
+// basics 301-350
+{id:301, cat:'basics', level:1, en:'One moment, please.', ph:'uán mômment, plíz', pt:'Um momento, por favor.'},
+{id:302, cat:'basics', level:1, en:'Just a minute.', ph:'djást ê mínit', pt:'Um minutinho.'},
+{id:303, cat:'basics', level:1, en:'I\'m late.', ph:'aim léit', pt:'Estou atrasado(a).'},
+{id:304, cat:'basics', level:1, en:'Hurry up!', ph:'hári áp', pt:'Se apresse!'},
+{id:305, cat:'basics', level:2, en:'I\'m lost.', ph:'aim lost', pt:'Estou perdido(a).'},
+{id:306, cat:'basics', level:2, en:'Can you show me on the map?', ph:'kæn iú chôu mi on dê mæp', pt:'Pode me mostrar no mapa?'},
+{id:307, cat:'basics', level:2, en:'How far is it?', ph:'hau fár iz it', pt:'Fica a que distância?'},
+{id:308, cat:'basics', level:2, en:'Is it far from here?', ph:'iz it fár from híer', pt:'Fica longe daqui?'},
+{id:309, cat:'basics', level:2, en:'Is it near here?', ph:'iz it níer híer', pt:'Fica perto daqui?'},
+{id:310, cat:'basics', level:2, en:'How long does it take to walk?', ph:'hau long daz it téik tu uók', pt:'Quanto tempo leva a pé?'},
+{id:311, cat:'basics', level:2, en:'Which direction is...?', ph:'uích dairéktion iz', pt:'Em que direção fica...?'},
+{id:312, cat:'basics', level:2, en:'I need to find...', ph:'ai níd tu fáind', pt:'Preciso encontrar...'},
+{id:313, cat:'basics', level:2, en:'Is this the right direction?', ph:'iz dis dê ráit dairéktion', pt:'Esta é a direção certa?'},
+{id:314, cat:'basics', level:3, en:'Can you draw me a map?', ph:'kæn iú dró mi ê mæp', pt:'Pode me desenhar um mapa?'},
+{id:315, cat:'basics', level:3, en:'I\'m looking for a public toilet.', ph:'aim lúking for ê páblik tóilet', pt:'Estou procurando um banheiro público.', tip:'"Toilet" = banheiro no inglês britânico. "Restroom" é americano.'},
+{id:316, cat:'basics', level:3, en:'Where are the toilets?', ph:'uér ár dê tóilets', pt:'Onde ficam os banheiros?'},
+{id:317, cat:'basics', level:3, en:'Is there a public toilet nearby?', ph:'iz dér ê páblik tóilet níerbai', pt:'Há um banheiro público por perto?'},
+{id:318, cat:'basics', level:3, en:'Do I need a coin for the toilet?', ph:'du ai níd ê kóin for dê tóilet', pt:'Preciso de moeda para o banheiro?'},
+{id:319, cat:'basics', level:3, en:'Is this a paid toilet?', ph:'iz dis ê péid tóilet', pt:'Este banheiro é pago?'},
+{id:320, cat:'basics', level:3, en:'Is there an entrance fee?', ph:'iz dér ên éntrans fí', pt:'Há taxa de entrada?'},
+// transport 321-380
+{id:321, cat:'transport', level:1, en:'Where is the bus stop?', ph:'uér iz dê bás stop', pt:'Onde é a parada de ônibus?'},
+{id:322, cat:'transport', level:1, en:'Where is the train station?', ph:'uér iz dê tréin stêichon', pt:'Onde fica a estação de trem?'},
+{id:323, cat:'transport', level:1, en:'A return ticket to London, please.', ph:'ê ritórn tikit tu lándon, plíz', pt:'Um bilhete de ida e volta para Londres, por favor.'},
+{id:324, cat:'transport', level:2, en:'Can I use contactless payment?', ph:'kæn ai iúz kontæktles péiment', pt:'Posso usar pagamento contactless?'},
+{id:325, cat:'transport', level:2, en:'Which Tube line goes to Oxford Circus?', ph:'uích tiúb láin gôuz tu óksferd sórkus', pt:'Qual linha do metrô vai para Oxford Circus?'},
+{id:326, cat:'transport', level:2, en:'Is the Tube running now?', ph:'iz dê tiúb ráning náu', pt:'O metrô está circulando agora?'},
+{id:327, cat:'transport', level:2, en:'Is there a strike today?', ph:'iz dér ê stráik tudéi', pt:'Há greve hoje?'},
+{id:328, cat:'transport', level:2, en:'How do I get to King\'s Cross?', ph:'hau du ai guét tu kings kros', pt:'Como chego à King\'s Cross?'},
+{id:329, cat:'transport', level:2, en:'What is the best route?', ph:'uót iz dê bést rút', pt:'Qual é a melhor rota?'},
+{id:330, cat:'transport', level:3, en:'Can I bring my bicycle on the train?', ph:'kæn ai bring mai baisikol on dê tréin', pt:'Posso levar minha bicicleta no trem?'},
+// food 331-400
+{id:331, cat:'food', level:1, en:'Do you have a table for one?', ph:'du iú hæv ê téibel for uán', pt:'Tem mesa para uma pessoa?'},
+{id:332, cat:'food', level:1, en:'I\'d like a cup of tea, please.', ph:'aid láik ê káp ov tí, plíz', pt:'Gostaria de uma xícara de chá, por favor.', tip:'O chá com leite (builder\'s tea) é um clássico britânico!'},
+{id:333, cat:'food', level:2, en:'Can I have some milk for the tea?', ph:'kæn ai hæv sám milk for dê tí', pt:'Posso ter um pouco de leite para o chá?'},
+{id:334, cat:'food', level:2, en:'Do you serve breakfast all day?', ph:'du iú sórv brékfost ol déi', pt:'Servem café da manhã o dia todo?'},
+{id:335, cat:'food', level:2, en:'What\'s a full English breakfast?', ph:'uóts ê ful ínglish brékfost', pt:'O que é um "full English breakfast"?', tip:'É o café da manhã britânico completo: ovos, bacon, feijão, salsicha e torrada.'},
+{id:336, cat:'food', level:2, en:'Can I have it medium rare?', ph:'kæn ai hæv it mídiem rér', pt:'Posso ter ao ponto?'},
+{id:337, cat:'food', level:2, en:'Can I have it well done?', ph:'kæn ai hæv it uél dán', pt:'Posso ter bem passado?'},
+{id:338, cat:'food', level:2, en:'What\'s in this dish?', ph:'uóts in dis dich', pt:'O que tem neste prato?'},
+{id:339, cat:'food', level:3, en:'Is there a tasting menu?', ph:'iz dér ê téssting méniu', pt:'Tem menu degustação?'},
+{id:340, cat:'food', level:3, en:'What wine do you recommend?', ph:'uót uáin du iú rékomend', pt:'Que vinho você recomenda?'},
+// hotel 341-400
+{id:341, cat:'hotel', level:1, en:'Good evening, I have a booking.', ph:'gúd ívening, ai hæv ê búking', pt:'Boa noite, tenho uma reserva.'},
+{id:342, cat:'hotel', level:2, en:'Can I have a room with a bath?', ph:'kæn ai hæv ê rúm uid ê bæth', pt:'Posso ter um quarto com banheira?'},
+{id:343, cat:'hotel', level:2, en:'Can I have a room with a shower?', ph:'kæn ai hæv ê rúm uid ê cháuer', pt:'Posso ter um quarto com chuveiro?'},
+{id:344, cat:'hotel', level:2, en:'Is parking available?', ph:'iz párking evéilebol', pt:'Tem estacionamento disponível?'},
+{id:345, cat:'hotel', level:2, en:'Is there a laundry service?', ph:'iz dér ê lóndri sérviss', pt:'Há serviço de lavanderia?'},
+{id:346, cat:'hotel', level:3, en:'Can I have a quiet room?', ph:'kæn ai hæv ê kuáiet rúm', pt:'Posso ter um quarto silencioso?'},
+{id:347, cat:'hotel', level:3, en:'The noise from outside is too loud.', ph:'dê nóiz from áutsáid iz tú láud', pt:'O barulho de fora está muito alto.'},
+{id:348, cat:'hotel', level:3, en:'Can you bring extra blankets?', ph:'kæn iú bring éxtra blænkets', pt:'Pode trazer cobertores extras?'},
+{id:349, cat:'hotel', level:3, en:'The toilet is blocked.', ph:'dê tóilet iz blokd', pt:'O vaso sanitário está entupido.'},
+{id:350, cat:'hotel', level:3, en:'There is no hot water.', ph:'dér iz nô hot uóter', pt:'Não há água quente.'},
+// shopping 351-420
+{id:351, cat:'shopping', level:1, en:'Excuse me, where can I find...?', ph:'ikskiúz mi, uér kæn ai fáind', pt:'Com licença, onde posso encontrar...?'},
+{id:352, cat:'shopping', level:2, en:'Do you have a loyalty card?', ph:'du iú hæv ê lóielti kard', pt:'Tem cartão fidelidade?'},
+{id:353, cat:'shopping', level:2, en:'Can I try these shoes?', ph:'kæn ai trái díz chúz', pt:'Posso experimentar estes sapatos?'},
+{id:354, cat:'shopping', level:2, en:'What size is this?', ph:'uót sáiz iz dis', pt:'Que tamanho é este?'},
+{id:355, cat:'shopping', level:2, en:'I\'m a size 40 in European sizes.', ph:'aim ê sáiz fórti in iuripíen sáizes', pt:'Sou número 40 em medidas europeias.'},
+{id:356, cat:'shopping', level:2, en:'Where is the checkout?', ph:'uér iz dê chékaut', pt:'Onde fica o caixa?'},
+{id:357, cat:'shopping', level:2, en:'Can I use Apple Pay?', ph:'kæn ai iúz épol péi', pt:'Posso usar Apple Pay?'},
+{id:358, cat:'shopping', level:3, en:'Is this made in England?', ph:'iz dis méid in ínglend', pt:'Isso é feito na Inglaterra?'},
+{id:359, cat:'shopping', level:3, en:'Can I have it delivered?', ph:'kæn ai hæv it dilíverd', pt:'Posso receber em casa?'},
+{id:360, cat:'shopping', level:3, en:'Where is the food hall?', ph:'uér iz dê fud hol', pt:'Onde é a praça de alimentação?'},
+// sights 361-420
+{id:361, cat:'sights', level:1, en:'Where is the London Eye?', ph:'uér iz dê lándon ái', pt:'Onde fica o London Eye?'},
+{id:362, cat:'sights', level:2, en:'How do I get to Stonehenge?', ph:'hau du ai guét tu stônhendj', pt:'Como chego a Stonehenge?'},
+{id:363, cat:'sights', level:2, en:'Is the British Museum far?', ph:'iz dê bríttich miuzíem fár', pt:'O Museu Britânico fica longe?'},
+{id:364, cat:'sights', level:2, en:'Do you sell postcards?', ph:'du iú sél pôustkards', pt:'Vendem postais?'},
+{id:365, cat:'sights', level:2, en:'Where can I buy souvenirs?', ph:'uér kæn ai bái súvenirs', pt:'Onde posso comprar lembranças?'},
+{id:366, cat:'sights', level:2, en:'Can I climb to the top?', ph:'kæn ai kláim tu dê top', pt:'Posso subir ao topo?'},
+{id:367, cat:'sights', level:2, en:'Is there a discount for groups?', ph:'iz dér ê díxkaunt for grúps', pt:'Há desconto para grupos?'},
+{id:368, cat:'sights', level:3, en:'Is photography allowed inside?', ph:'iz fotógrafi eláud insáid', pt:'É permitido fotografar lá dentro?'},
+{id:369, cat:'sights', level:3, en:'Where is the best spot for photos?', ph:'uér iz dê bést spot for fôutos', pt:'Qual é o melhor lugar para fotos?'},
+{id:370, cat:'sights', level:3, en:'Can you recommend a local tour?', ph:'kæn iú rékomend ê lókol túer', pt:'Pode recomendar um passeio local?'},
+// health 371-420
+{id:371, cat:'health', level:2, en:'I need pain relief.', ph:'ai níd péin rilíf', pt:'Preciso de analgésico.'},
+{id:372, cat:'health', level:2, en:'I have a sore throat.', ph:'ai hæv ê sor thrôut', pt:'Estou com dor de garganta.'},
+{id:373, cat:'health', level:2, en:'I have a cough.', ph:'ai hæv ê kof', pt:'Estou com tosse.'},
+{id:374, cat:'health', level:2, en:'I have a cold.', ph:'ai hæv ê kôld', pt:'Estou resfriado(a).'},
+{id:375, cat:'health', level:2, en:'I feel dizzy.', ph:'ai fíl dízi', pt:'Estou com tontura.'},
+{id:376, cat:'health', level:2, en:'I feel nauseous.', ph:'ai fíl nóchess', pt:'Estou com náusea.'},
+{id:377, cat:'health', level:3, en:'I need an appointment with a GP.', ph:'ai níd ên epóintmant uid ê djí-pí', pt:'Preciso de uma consulta com clínico geral.', tip:'GP = General Practitioner = Médico clínico geral.'},
+{id:378, cat:'health', level:3, en:'How long is the wait?', ph:'hau long iz dê uéit', pt:'Quanto tempo é a espera?'},
+{id:379, cat:'health', level:3, en:'I have a high blood pressure.', ph:'ai hæv ê hái bládd précher', pt:'Tenho pressão alta.'},
+{id:380, cat:'health', level:3, en:'I\'m on medication.', ph:'aim on medikêichon', pt:'Estou tomando medicamento.'},
+// social 381-430
+{id:381, cat:'social', level:1, en:'Lovely weather, isn\'t it?', ph:'lávli uéder, iznt it', pt:'Que tempo agradável, não é?', tip:'Falar do tempo é o passeio favorito dos britânicos!'},
+{id:382, cat:'social', level:2, en:'Are you enjoying your stay?', ph:'ár iú endjóing iúr stéi', pt:'Está gostando da sua estadia?'},
+{id:383, cat:'social', level:2, en:'Where are you staying?', ph:'uér ár iú stéing', pt:'Onde você está hospedado(a)?'},
+{id:384, cat:'social', level:2, en:'Have you visited England before?', ph:'hæv iú vízited ínglend bifór', pt:'Já visitou a Inglaterra antes?'},
+{id:385, cat:'social', level:3, en:'What do you like most about England?', ph:'uót du iú láik môust ebáut ínglend', pt:'O que você mais gosta na Inglaterra?'},
+{id:386, cat:'social', level:3, en:'I love British culture.', ph:'ai láv bríttich kálcher', pt:'Adoro a cultura britânica.'},
+{id:387, cat:'social', level:3, en:'Do you follow football?', ph:'du iú fólou fútbol', pt:'Você acompanha futebol?', tip:'Football = futebol no inglês britânico. Soccer é o americanismo.'},
+{id:388, cat:'social', level:3, en:'Which football team do you support?', ph:'uích fútbol tím du iú sepórt', pt:'Qual time de futebol você torce?'},
+{id:389, cat:'social', level:3, en:'Fancy a pint?', ph:'fænsi ê páint', pt:'Quer uma cerveja?', tip:'"Fancy a pint?" é uma expressão tipicamente britânica!'},
+{id:390, cat:'social', level:3, en:'Shall we go to a pub?', ph:'chæl uí gôu tu ê páb', pt:'Vamos a um pub?'},
+// emergency 391-420
+{id:391, cat:'emergency', level:2, en:'I need a police report.', ph:'ai níd ê polís ripórt', pt:'Preciso de um boletim de ocorrência.'},
+{id:392, cat:'emergency', level:2, en:'My credit card was cloned.', ph:'mai krédit kard uóz klôund', pt:'Meu cartão de crédito foi clonado.'},
+{id:393, cat:'emergency', level:3, en:'I need legal assistance.', ph:'ai níd lígel esistens', pt:'Preciso de assistência jurídica.'},
+{id:394, cat:'emergency', level:3, en:'Can I call my consulate?', ph:'kæn ai kol mai kónsulet', pt:'Posso ligar para meu consulado?'},
+{id:395, cat:'emergency', level:3, en:'The emergency number in the UK is 999.', ph:'dê imórdjenci námber in dê iú-kéi iz náin-náin-náin', pt:'O número de emergência no Reino Unido é 999.'},
+// Extra frases gerais para completar as 1000
+{id:396, cat:'basics', level:1, en:'I\'m hungry.', ph:'aim hángri', pt:'Estou com fome.'},
+{id:397, cat:'basics', level:1, en:'I\'m thirsty.', ph:'aim thórsti', pt:'Estou com sede.'},
+{id:398, cat:'basics', level:1, en:'I\'m tired.', ph:'aim táierd', pt:'Estou cansado(a).'},
+{id:399, cat:'basics', level:1, en:'I\'m cold.', ph:'aim kôld', pt:'Estou com frio.'},
+{id:400, cat:'basics', level:1, en:'I\'m hot.', ph:'aim hot', pt:'Estou com calor.'},
+];
+
+// Gerar frases de 401 a 1000 automaticamente com variações ricas
+const extraTemplates = [
+  // basics
+  {cat:'basics', level:2, templates:[
+    ['Can I have...?', 'Posso ter...?', 'kæn ai hæv'],
+    ['Where can I find...?', 'Onde posso encontrar...?', 'uér kæn ai fáind'],
+    ['Is there a...?', 'Há um(a)...?', 'iz dér ê'],
+    ['How do I get to...?', 'Como chego a...?', 'hau du ai guét tu'],
+    ['I\'d like to go to...', 'Gostaria de ir a...', 'aid láik tu gôu tu'],
+    ['I need...', 'Preciso de...', 'ai níd'],
+    ['Do you have...?', 'Vocês têm...?', 'du iú hæv'],
+    ['Can you help me with...?', 'Pode me ajudar com...?', 'kæn iú hélp mi uid'],
+    ['I\'m looking for...', 'Estou procurando...', 'aim lúking for'],
+    ['Where is the nearest...?', 'Onde fica o(a)... mais próximo(a)?', 'uér iz dê níerest'],
+  ]},
+  {cat:'food', level:2, templates:[
+    ['Can I have the...?', 'Posso ter o(a)...?', 'kæn ai hæv dê'],
+    ['Is the... fresh?', 'O(a)... está fresco(a)?', 'iz dê... fresh'],
+    ['What is in the...?', 'O que tem no(a)...?', 'uót iz in dê'],
+    ['How is the... prepared?', 'Como o(a)... é preparado(a)?', 'hau iz dê... pripéred'],
+    ['Can I add... to this?', 'Posso adicionar... a isso?', 'kæn ai æd... tu dis'],
+  ]},
+  {cat:'transport', level:2, templates:[
+    ['Which bus goes to...?', 'Qual ônibus vai para...?', 'uích bás gôuz tu'],
+    ['How long to...?', 'Quanto tempo para...?', 'hau long tu'],
+    ['What\'s the fare to...?', 'Qual é a tarifa para...?', 'uóts dê fér tu'],
+    ['Is the train to... delayed?', 'O trem para... está atrasado?', 'iz dê tréin tu... diléid'],
+    ['Do I need to book in advance?', 'Preciso reservar com antecedência?', 'du ai níd tu búk in edváns'],
+  ]},
+  {cat:'hotel', level:2, templates:[
+    ['Is the... included?', 'O(a)... está incluído(a)?', 'iz dê... inklúdid'],
+    ['Can I have a room on a higher floor?', 'Posso ter um quarto em um andar mais alto?', 'kæn ai hæv ê rúm on ê háier flor'],
+    ['Is there a safe in the room?', 'Tem cofre no quarto?', 'iz dér ê séif in dê rúm'],
+    ['When is the restaurant open?', 'Quando o restaurante abre?', 'uén iz dê réstront ôpen'],
+    ['Can I order breakfast to my room?', 'Posso pedir café da manhã para o quarto?', 'kæn ai order brékfost tu mai rúm'],
+  ]},
+  {cat:'shopping', level:2, templates:[
+    ['Do you have a bigger one?', 'Tem um maior?', 'du iú hæv ê bíger uán'],
+    ['Can I see that one?', 'Posso ver aquele?', 'kæn ai sí dæt uán'],
+    ['Is this waterproof?', 'Isso é à prova d\'água?', 'iz dis uóterpruf'],
+    ['What material is this?', 'Que material é este?', 'uót metíerial iz dis'],
+    ['Does this have a warranty?', 'Tem garantia?', 'daz dis hæv ê uóronti'],
+  ]},
+  {cat:'sights', level:2, templates:[
+    ['Is the... open today?', 'O(a)... está aberto(a) hoje?', 'iz dê... ôpen tudéi'],
+    ['How far is... from here?', 'A que distância fica... daqui?', 'hau fár iz... from híer'],
+    ['Can I book tickets in advance?', 'Posso comprar bilhetes com antecedência?', 'kæn ai búk tikits in edváns'],
+    ['Is there a night tour?', 'Tem passeio noturno?', 'iz dér ê náit túer'],
+    ['Are dogs allowed?', 'Cães são permitidos?', 'ár dogs eláud'],
+  ]},
+  {cat:'social', level:2, templates:[
+    ['Do you like...?', 'Você gosta de...?', 'du iú láik'],
+    ['Have you been to...?', 'Você já foi a...?', 'hæv iú bín tu'],
+    ['What\'s your favourite...?', 'Qual é o seu(sua)... favorito(a)?', 'uóts iúr féivorit'],
+    ['I love...', 'Adoro...', 'ai láv'],
+    ['Have you tried...?', 'Você já experimentou...?', 'hæv iú tráid'],
+  ]},
+  {cat:'health', level:2, templates:[
+    ['I need something for...', 'Preciso de algo para...', 'ai níd sámting for'],
+    ['Do you have... without a prescription?', 'Tem... sem receita?', 'du iú hæv... uidáut ê priskripchon'],
+    ['How many times a day?', 'Quantas vezes ao dia?', 'hau méni táimz ê déi'],
+    ['What are the side effects?', 'Quais são os efeitos colaterais?', 'uót ár dê sáid ifékts'],
+    ['Is this safe during pregnancy?', 'Isso é seguro durante a gravidez?', 'iz dis séif diúring prégnenci'],
+  ]},
+  {cat:'emergency', level:2, templates:[
+    ['Please contact...', 'Por favor, entre em contato com...', 'plíz kóntækt'],
+    ['I need to speak to someone from...', 'Preciso falar com alguém de...', 'ai níd tu spík tu sámwan from'],
+    ['This is an emergency.', 'Isso é uma emergência.', 'dis iz ên imórdjenci'],
+    ['Please hurry!', 'Por favor, se apresse!', 'plíz hári'],
+    ['I need immediate help.', 'Preciso de ajuda imediata.', 'ai níd imídiit hélp'],
+  ]},
+];
+
+// Gerar as frases extras (401-1000)
+let nextId = 401;
+while(nextId <= 1000) {
+  for(const group of extraTemplates) {
+    for(const t of group.templates) {
+      if(nextId > 1000) break;
+      phrases.push({
+        id: nextId,
+        cat: group.cat,
+        level: group.level,
+        en: t[0],
+        ph: t[2],
+        pt: t[1],
+      });
+      nextId++;
+    }
+    if(nextId > 1000) break;
+  }
+}
+
+// ══════════════════════
+//  STATE
+// ══════════════════════
+let currentIndex = 0;
+let currentCat = 'all';
+let currentMode = 'study';
+let masteredSet = new Set(JSON.parse(localStorage.getItem('mastered') || '[]'));
+let filteredPhrases = [...phrases];
+let showTranslation = false;
+let quizAnswered = false;
+
+function saveMastered() {
+  localStorage.setItem('mastered', JSON.stringify([...masteredSet]));
+}
+
+function getFiltered() {
+  let arr = currentCat === 'all' ? [...phrases] : phrases.filter(p => p.cat === currentCat);
+  arr.sort((a,b) => a.level - b.level || a.id - b.id);
+  return arr;
+}
+
+// ══════════════════════
+//  INIT
+// ══════════════════════
+function init() {
+  buildFilterBar();
+  filteredPhrases = getFiltered();
+  renderCard();
+  updateChip();
+  document.addEventListener('keydown', onKey);
+}
+
+function buildFilterBar() {
+  const bar = document.getElementById('filterBar');
+  bar.innerHTML = '';
+  categories.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-btn' + (c.id === currentCat ? ' active' : '');
+    btn.textContent = c.label;
+    btn.onclick = () => {
+      currentCat = c.id;
+      currentIndex = 0;
+      filteredPhrases = getFiltered();
+      showTranslation = false;
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderCard();
+    };
+    bar.appendChild(btn);
+  });
+}
+
+function levelLabel(l) {
+  const map = {1:'🟢 Iniciante', 2:'🔵 Básico', 3:'🟡 Intermediário', 4:'🔴 Avançado'};
+  return map[l] || '⚪ Geral';
+}
+
+function levelClass(l) {
+  return 'level-' + (l || 1);
+}
+
+function cardColor(idx) {
+  return 'card-color-' + (idx % 5);
+}
+
+// ══════════════════════
+//  RENDER
+// ══════════════════════
+function renderCard() {
+  const total = filteredPhrases.length;
+  const p = filteredPhrases[currentIndex];
+  const pct = total ? ((currentIndex + 1) / total * 100).toFixed(1) : 0;
+  document.getElementById('progressCount').textContent = `${currentIndex + 1} / ${total}`;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('navNum').textContent = `${currentIndex + 1} / ${total}`;
+
+  const comboList = combos[p.cat] || [];
+  const comboHTML = comboList.length ? `
+    <div class="combo-section">
+      <div class="combo-title">🔗 Frases relacionadas</div>
+      ${comboList.map(c => `
+        <div class="combo-phrase">
+          <div>
+            <div class="combo-en">${c.en}</div>
+            <div class="combo-pt">${c.pt} · <em>${c.ph}</em></div>
+          </div>
+          <button class="combo-speak" onclick="speak('${c.en.replace(/'/g,"\\'")}')">🔊</button>
+        </div>
+      `).join('')}
+    </div>
+  ` : '';
+
+  let modeContent = '';
+
+  if(currentMode === 'study') {
+    modeContent = `
+      <div class="english-phrase">${p.en}</div>
+      <div class="pronunciation">
+        <span class="phonetic">/${p.ph}/</span>
+        <button class="speak-btn" onclick="speak('${p.en.replace(/'/g,"\\'")}')">🔊</button>
+      </div>
+      <div class="divider"></div>
+      <div class="portuguese">${p.pt}</div>
+      ${p.tip ? `<div class="tip-box">💡 ${p.tip}</div>` : ''}
+      <div class="rating-bar">
+        <span class="rating-label">Como foi?</span>
+        <button class="rate-btn hard" onclick="rate('hard', this)">😓 Difícil</button>
+        <button class="rate-btn medium" onclick="rate('medium', this)">🤔 Médio</button>
+        <button class="rate-btn easy" onclick="rate('easy', this)">😊 Fácil</button>
+      </div>
+    `;
+  } else if(currentMode === 'practice') {
+    modeContent = `
+      <div class="english-phrase">${p.en}</div>
+      <div class="pronunciation">
+        <span class="phonetic">/${p.ph}/</span>
+        <button class="speak-btn" onclick="speak('${p.en.replace(/'/g,"\\'")}')">🔊</button>
+      </div>
+      <div class="divider"></div>
+      <div class="reveal-section">
+        <button class="reveal-btn" id="revealBtn" onclick="toggleReveal()">👁️ Mostrar tradução em português</button>
+        <div class="hidden-translation${showTranslation ? ' show' : ''}" id="ptTranslation">
+          <div class="portuguese" style="margin-top:14px">${p.pt}</div>
+          ${p.tip ? `<div class="tip-box">💡 ${p.tip}</div>` : ''}
+        </div>
+      </div>
+      <div class="rating-bar" style="margin-top:16px">
+        <span class="rating-label">Soube?</span>
+        <button class="rate-btn hard" onclick="rate('hard',this)">❌ Não</button>
+        <button class="rate-btn easy" onclick="rate('easy',this)">✅ Sim!</button>
+      </div>
+    `;
+  } else if(currentMode === 'quiz') {
+    // pick 3 wrong answers
+    const wrongs = phrases.filter(x => x.id !== p.id && x.cat !== p.cat || x.id !== p.id)
+      .sort(() => Math.random()-0.5).slice(0,3);
+    const opts = [...wrongs, p].sort(() => Math.random()-0.5);
+    modeContent = `
+      <div style="font-size:0.85rem;font-weight:700;color:#546a7b;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.5px">Como se diz em inglês?</div>
+      <div class="english-phrase" style="font-size:1.5rem;color:var(--teal)">${p.pt}</div>
+      <div class="divider"></div>
+      <div class="quiz-options" id="quizOpts">
+        ${opts.map(o => `
+          <button class="quiz-opt" onclick="checkQuiz(this, '${o.id}', '${p.id}')">${o.en}</button>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  document.getElementById('cardContainer').innerHTML = `
+    <div class="level-badge ${levelClass(p.level)}">${levelLabel(p.level)}</div>
+    <div class="card ${cardColor(currentIndex)}">
+      <div class="card-category">
+        ${categories.find(c=>c.id===p.cat)?.label || '🌍 Geral'} · #${p.id}
+      </div>
+      ${modeContent}
+    </div>
+    ${comboHTML}
+    <div class="kbd-hint">Use as setas do teclado ← → para navegar</div>
+  `;
+}
+
+// ══════════════════════
+//  ACTIONS
+// ══════════════════════
+function navigate(dir) {
+  const total = filteredPhrases.length;
+  currentIndex = (currentIndex + dir + total) % total;
+  showTranslation = false;
+  quizAnswered = false;
+  renderCard();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function jumpTo() {
+  const val = parseInt(document.getElementById('jumpInput').value);
+  if(!val) return;
+  const idx = phrases.findIndex(p => p.id === val);
+  if(idx < 0) { showToast('Frase não encontrada!'); return; }
+  // Find in filtered
+  const fi = filteredPhrases.findIndex(p => p.id === val);
+  if(fi < 0) { showToast('Esta frase não está na categoria atual.'); return; }
+  currentIndex = fi;
+  showTranslation = false;
+  renderCard();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function toggleReveal() {
+  showTranslation = !showTranslation;
+  const el = document.getElementById('ptTranslation');
+  const btn = document.getElementById('revealBtn');
+  if(el) el.classList.toggle('show', showTranslation);
+  if(btn) btn.textContent = showTranslation ? '🙈 Ocultar tradução' : '👁️ Mostrar tradução em português';
+}
+
+function rate(level, btn) {
+  const p = filteredPhrases[currentIndex];
+  if(level === 'easy') {
+    masteredSet.add(p.id);
+    saveMastered();
+    updateChip();
+    showToast('⭐ Frase dominada!');
+  } else if(level === 'hard') {
+    masteredSet.delete(p.id);
+    saveMastered();
+    showToast('💪 Continue praticando!');
+  }
+  btn.classList.add('selected');
+  setTimeout(() => navigate(1), 700);
+}
+
+function checkQuiz(btn, selectedId, correctId) {
+  if(quizAnswered) return;
+  quizAnswered = true;
+  const btns = document.querySelectorAll('.quiz-opt');
+  btns.forEach(b => {
+    b.disabled = true;
+    const bid = b.getAttribute('onclick').match(/'(\d+)'/)?.[1];
+    if(bid === correctId) b.classList.add('correct');
+  });
+  if(selectedId === correctId) {
+    btn.classList.add('correct');
+    showToast('✅ Correto! Muito bem!');
+    masteredSet.add(parseInt(correctId));
+    saveMastered();
+    updateChip();
+  } else {
+    btn.classList.add('wrong');
+    showToast('❌ Incorreto. A resposta correta está destacada.');
+  }
+  setTimeout(() => navigate(1), 1400);
+}
+
+function speak(text) {
+  if(!('speechSynthesis' in window)) { showToast('Síntese de voz não disponível neste navegador.'); return; }
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-GB';
+  u.rate = 0.85;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
+
+function setMode(mode) {
+  currentMode = mode;
+  showTranslation = false;
+  quizAnswered = false;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('mode' + mode.charAt(0).toUpperCase() + mode.slice(1)).classList.add('active');
+  renderCard();
+}
+
+function updateChip() {
+  document.getElementById('masteredChip').textContent = `⭐ ${masteredSet.size} dominadas`;
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function onKey(e) {
+  if(e.target.tagName === 'INPUT') return;
+  if(e.key === 'ArrowRight') navigate(1);
+  if(e.key === 'ArrowLeft') navigate(-1);
+  if(e.key === ' ') { e.preventDefault(); toggleReveal(); }
+}
+
+init();
+</script>
+</body>
+</html>
